@@ -12,8 +12,8 @@
 \usepackage{graphicx}
 \usepackage{subfigure}
 
-\usepackage{spverbatim}
-\usepackage{moreverb} % for verbatim ouput
+\usepackage{verbatim}
+%\usepackage{moreverb} % for verbatim ouput
 
 % Count of words
 
@@ -36,11 +36,16 @@
 %ex title{Taxis in \Dros larvae can be modelled as simple sensory modulation of lateral oscillation.}
 
 \begin{document}
+\subsubsection*{Counts of words} 
+\wordcount
+
 \maketitle
+%TC:break _ABSTRACT_
 \begin{abstract}
 The larvae of \Dros  Melanogaster spontaneously crawl towards or away from odours. This taxis behaviour is thought to consist of several distinct control mechanisms that trigger specific actions, which is sometimes characterised as decision-making based on short term memory. The present work supports an alternative, simpler, hypothesis, where taxis results from direct ongoing sensory modulation of continuous lateral oscillations of the anterior body. Our analysis of larvae motions shows a rythmical, continuous lateral oscillation of the anterior body which encompasses all head sweeps, small or large, without breaking the oscillatory rythm.  We demonstrate that an abstract model agent that embodies this hypothesis, operating in closed loop with the sensory environment, reproduces a surprising number of phenomena observed in larvae. Moreover, this mechanism enables all sensory modalities guided taxis, innate or learnt, to converge on a unique motor control substrate. This provides a simple and robust solution to integrate multiple information, and accounts for recent data showing strong consistencies in the effects on taxis of changes in stimulus amplitude, learning, and multimodal stimulation. We also show, in a more realistic continuous time simulation, that the oscillatory mechanism has a plausible neural implementation, and discuss the relevant neural pathways in the larvae that could support the hypothesised modulation signal.
 \end{abstract}
 
+%TC:break _MAIN_
 \section{Introduction}
 The larvae of \Dros display taxis behaviours by spontaneously crawling towards or away from the source of stimuli such as odours, or more generally, up or down stimulus gradients, including chemical, light and temperature gradients \citep{luo2010navigational,gomez2011active,gomez2012active,gomez2014multilevel,kane2013sensorimotor,klein2015sensory}. This behavioural tendency is flexible and can be altered by associative learning if the stimulus is presented together with a positive or negative reinforcer \citep{ache2005olfaction,scherer2003olfactory,gerber2004engram,diegelmann2013maggot,schleyer2015learning}. The development of both a rich genetic manipulation toolkit and sophisticated behavioural assays, \citep{gerber2009smelling,diegelmann2013maggot} have provided the basis for an explosion of studies targeting the biological underpinnings of larval taxis, as an ideal model system for investigating the neural basis of sensorimotor control and learning.
 
@@ -225,7 +230,10 @@ Under this light, explicit representations of actions to turn left or right and 
 Finally this view suits well an evolutionary scenario. 
 Because there is only one sensory-motor module for taxis, new features (e.g., such as sensory receptors or intermediate relays such as MB) can be added to the circuit with a single new connection and directly impact on behaviour in a meaningful way. Thus behaviour can adapt to new environmental conditions  without requiring new sensori-motor processing. Some have argued that over long time scales, natural selection favour not merely effective innovations, but systems that flexibly enable the incorporation of new innovation (Vermeij G.J. 1973). The neural circuit underlying the sensory-modulated motor-pattern we described here could be considered as a locomotor module that provides the evolutionary flexibility to allow taxis behaviour to adapt by simply plugging-in or removing input modalities. 
 
+
+
 \section{Materials And Methods}
+%TC:break _Methods_
 \subsection{Real larvae path analysis.}
 We analysed the tracks from 42 wild type larvae provided by Mathieu Louis, as recorded in \cite{gomez2011active}. Each 3rd instar foraging larval path was recorded for 5 min at 7fps after releasing each larval on a rectangular agarose slab across the other end from an odour source given by an ethyl butyrate droplet suspended from the lid. Tail, centroid and head positions where extracted from each frame of the video using custom tracking software at CRG (see ref). We used here Matlab to analyse the tracks. Body bending was calculated as the angle formed between the tail-to-centroid axis and centroid-to-head axis. The variable ‘angular velocity of the anterior part of the body’ was obtained as the derivative across time of the centroid-to-head axis orientation. Specifics of the path analysis are presented were appropriate in the result sections. 
 
@@ -369,7 +377,8 @@ A(t) = b_T + A_m U(t-t_s),
 \end{equation}
 where $U(t)$ is the unit step function with an onset time at $t_s$. The change of bearing was measured by integrating the head angle for long enough time for it to settle back to its cycle of zero-average change of bearing. Each curve of \ref{fig:LampreyModel}.F consist of $10^2$ points covering $t_s$ timing over a full cycle of oscillation (ie. from one peak of $E_L$ burst to the next), while each curve differers in the step amplitude $A_m$.
 
-
+%TC:break _Supplementary_
+%TC:ignore 
 \section{Supplementary}
 \subsection{Understanding the discrete agent's algorithm}
 \label{sec:AlgoExplain}
@@ -690,7 +699,8 @@ In the agent's 2D environment the drift speed is the change in the bearing to od
 
 \bibliography{NeuralOscillatorPaper}
 
+%TC:endignore 
 
-\subsubsection*{Counts of words} 
-\wordcount
+
+
 \end{document}
