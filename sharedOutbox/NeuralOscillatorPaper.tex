@@ -13,6 +13,14 @@
 \usepackage{subfigure}
 
 \usepackage{spverbatim}
+\usepackage{moreverb} % for verbatim ouput
+
+% Count of words
+
+
+\immediate\write18{texcount -inc -incbib -sum NeuralOscillatorPaper.tex > /tmp/wordcount.tex}
+\newcommand\wordcount{\verbatiminput{/tmp/wordcount.tex}}
+
 
 \usepackage[draft]{todonotes}   % notes showed
 
@@ -676,14 +684,13 @@ In the agent's 2D environment the drift speed is the change in the bearing to od
 \end{figure}
 
 
+
+
 \clearpage
 
 \bibliography{NeuralOscillatorPaper}
-\end{document}
 
-%%Figure Template
-%\begin{figure}[]
-%\subfigure[  $\log{C}=-3$ ]{
-%\includegraphics[width=175px]{figures/Learning/Adult/DiffLI/Kandelian/KandelianboxKNdel-FixedC-3LIDSVsAngleRndWpnkc_CI1500g_PN_KC095Block1COdours_1000PN_21KC_250-v3.eps}}
-%\caption[Blank]{Blank \label{fig:Blank}.  }
-%\end{figure}
+
+\subsubsection*{Counts of words} 
+\wordcount
+\end{document}
