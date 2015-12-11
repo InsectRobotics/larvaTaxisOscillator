@@ -10,17 +10,16 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\usepackage{subfigure}
+%\usepackage{subfigure}
+\usepackage{caption}
 
 \usepackage{verbatim}
 %\usepackage{moreverb} % for verbatim ouput
 
 % Count of words
 
-
 \immediate\write18{texcount -inc -incbib -sum NeuralOscillatorPaper.tex > /tmp/wordcount.tex}
-\newcommand\wordcount{\verbatiminput{/tmp/wordcount.tex}}
-
+\newcommand\wordcount{\verbatiminput{/tmp/wordcount.tex}} %%
 
 \usepackage[draft]{todonotes}   % notes showed
 
@@ -172,7 +171,7 @@ By ignoring the peristalsis inhibition events observed in larvae, our models sho
 
 \section{Discussion}
 \todo{KL:Note , I made changes in start of discussion}
-We have used an agent based simulation to investigate how taxis behaviours in Drosophila larvae can result from the interaction of brain, behaviour and the environment. We believe our model captures the essential mechanisms for the emergence of behavioural signatures characteristic of taxis and unifies previously identified frequent ‘low amplitude head-casts’ \citep{gomez2014multilevel} with the apparent continuous oscillation of the anterior body (Figure \ref{fig:Fig2}). %Is *turning velocity* required here? 
+We have used an agent based simulation to investigate how taxis behaviours in \Dros larvae can result from the interaction of brain, behaviour and the environment. We believe our model captures the essential mechanisms for the emergence of behavioural signatures characteristic of taxis and unifies previously identified frequent ‘low amplitude head-casts’ \citep{gomez2014multilevel} with the apparent continuous oscillation of the anterior body (Figure \ref{fig:Fig2}). %Is *turning velocity* required here? 
  The model consists of a sensory process sensitive to changes in stimulus conditions that modulates the amplitude of an ongoing oscillation of the anterior body that carries this sensor.
 These two components are coupled by a simple linear gain and operate in a closed-loop with the environment to produce robust taxis (Figure \ref{fig:Fig1} and supplementary material) and can generate a range of phenomena observed in larvae (see results) via a simple variation of this gain.
 We therefore suggest that larval taxis results from a closed-loop sensory modulation of the dynamics of an intrinsic motor pattern, which can be a particularly efficient neural mechanism for flexible behavioural control \citep{lemon2015whole,izquierdo2010evolution,kanzaki1996behavioral,levi2005role,willis1997active}. 
@@ -197,7 +196,7 @@ Both the valence (attractive or aversive) and salience (strength of attraction o
 Our model requires that the signal sent must eventually converge before mediating the motor response. The subesophaegal zone could be a potential candidate as a zone of convergence before the integrated signal is sent downstream to the motor circuitry \cite{tastekin2015role}. The attractiveness of an odour should thus depend on the net weight of its output signal at this zone of convergence.   
   
 \subsection{Phasic and tonic connections}
-Our model assumes that larvae are able to obtain the relative change in odour concentration perceived along displacement of the head.  Electrophysiological recordings in larvae suggest that olfactory sensory neurons (OSNs) and projection neurons (PNs) do emphasize such transient information: when stimulated by step odour input, they show a sharp peak of activation at the onset of the stimulus, and a depolarisation at the offset \cite{schulze2015dynamical}. As noted for C.elegans \citep{lockery2011computational}, such transient information is crucial to enable the agent to climb or escape gradient of stimulus concentration. Using an evolutionary algorithm to explore possible circuits, \cite{izquierdo2010evolution} propose a similar mechanism to explain taxis behaviour in C.elegans, i.e. intrinsic oscillation modulated by a bilateral signal proportional to change in sensory input. In their model, oscillations are regulated by both so-called ON and OFF cells. ON cells respond to up-gradient and down-regulate turns; and OFF cells detect down-gradient and up regulate turns, thus mediating attraction. In the larva, we suggest up and down-regulation of the turns could be mediated by a same sensory neuron being depolarised or hyperpolarised (Figure \ref{fig:Fig1}). This fits the fact that there is usually a single PN for each glomerulus in Drosophila \todo{(ref)}, and explains how PNs with opposite valence can cancel each other into a neutral behavioural response (see supplemental material). 
+Our model assumes that larvae are able to obtain the relative change in odour concentration perceived along displacement of the head.  Electrophysiological recordings in larvae suggest that olfactory sensory neurons (OSNs) and projection neurons (PNs) do emphasize such transient information: when stimulated by step odour input, they show a sharp peak of activation at the onset of the stimulus, and a depolarisation at the offset \cite{schulze2015dynamical}. As noted for C.elegans \citep{lockery2011computational}, such transient information is crucial to enable the agent to climb or escape gradient of stimulus concentration. Using an evolutionary algorithm to explore possible circuits, \cite{izquierdo2010evolution} propose a similar mechanism to explain taxis behaviour in C.elegans, i.e. intrinsic oscillation modulated by a bilateral signal proportional to change in sensory input. In their model, oscillations are regulated by both so-called ON and OFF cells. ON cells respond to up-gradient and down-regulate turns; and OFF cells detect down-gradient and up regulate turns, thus mediating attraction. In the larva, we suggest up and down-regulation of the turns could be mediated by a same sensory neuron being depolarised or hyperpolarised (Figure \ref{fig:Fig1}). This fits the fact that there is usually a single PN for each glomerulus in \Dros \todo{(ref)}, and explains how PNs with opposite valence can cancel each other into a neutral behavioural response (see supplemental material). 
 
 Although not the main focus of this paper, we have also considered the effects of a tonic sensory response. Contrary to a phasic neuron, a tonic neuron response does not adapt and thus provokes in our model a consistent change in the larvae behaviour as long as it is exposed to the stimulus. The presence of a tonic excitatory response explains the overall increase of turn observed in larvae in the presence of fructose (Figure \ref{fig:Fig9}). Conversely, it could be supposed that aversive tastant such as quinine would decrease the rate of turns and thus straighten the path taken by the larvae by making a tonic inhibitory contribution to the overall gain. 
 
@@ -520,8 +519,8 @@ F_{s,r}^j = \frac{1}{\sqrt{n}} \sum_{r=1}^n \exp{[2 \pi i \frac{ (s-1)(r-1)}{n}]
 \end{equation}
 The spectrum plot is obtain by taking the mean of each speed vector spectrum out of $n=25$ trajectories with their starting points placed distributed according to squared matrix of points centred on the odour source. Each trajectory is obtained by setting the initial conditions $x(0),y(0)$ to point on the matrix with a distance of 1cm of each other.
 
+\newpage
 \section{Figures}
-
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=110mm]{figures/Fig1_method_agent.pdf}
@@ -530,6 +529,7 @@ The spectrum plot is obtain by taking the mean of each speed vector spectrum out
 {\bf C.} Example of a section of path taken by the agent. The transparent larva provides indication of the size of the body relative to each step. Black dots indicate the locations of the head, where the odour concentration is sampled across successive steps. Red line indicates the direction from which the agent’s head is coming from, and the underlying dark continuous line indicates the overall path taken by the agent’s head. Each step is of 1mm length. The blue lines indicate the isoclines of the odour concentration.
 {\bf D.} Example of paths resulting from negative and positive gain, showing respectively attraction towards and repulsion away from the stimulus source.
 \label{fig:Fig1}}
+\hrule
 \end{center}
 \end{figure}
 
@@ -540,10 +540,21 @@ The spectrum plot is obtain by taking the mean of each speed vector spectrum out
 Left hand side graphs show the history of angular speed of the anterior part of the body (blue), body bending (black), and peristaltic motion (grey dote line) given tail speed (green). Each graph corresponds to the portion of paths shown on the right hand side, and the number labels link particular event. Overall, they highlight the continuous alternation between left and right turn, and the non-stereotypy of the peristalsis inhibition events; which does not interrupt turning alternation.
 {\bf A.} Section with no peristalsis inhibition. The larva shows a continuous alternation between left and right turns but turning is biased in both intensity and duration towards positive angle, resulting in a left curve.
 {\bf B.}) Section with an intermediate (1) and two stronger (2 and 3) peristalsis inhibition events.
+\label{fig:Fig2}
+}
+\hrule
+\end{center}
+\end{figure}
+
+
+
+\begin{figure}[t!]
+\ContinuedFloat
+\caption{
 {\bf C.}) Section including a peristalsis inhibition event covering two successive turns (4 and 5). The green bars (1 and 2) indicate moments at which the body bending lessens (from left to right) even though the larva anterior body is still slightly turning towards the left. This is due to the simultaneous forward peristalsis motion bringing the posterior part of the body towards the axis of the anterior part. Body bending is a result of multiple parameters from current and previous motions. Angular speed of the anterior body provides thus a better proxy to infer the control commands involved. B,C) Red dotted lines indicate onset of peristalsis inhibition (conservatively late measure) which occurs before strong angular speed or body bending experienced. This refutes the possibility that peristalsis inhibition results from body feedbacks, and suggest that a signal is sent in parallel to the turning angle command. D) Fourier analysis of the angular velocity of the anterior body (blue) and tail speed (green) across all larvae and a single individual (inset). Tail speed shows that the peristalsis rhythm is fairly constant across larva at around 1Hz. One can notice the slight harmonics of the tail speed at 0.5Hz, which results from the tendency of some larvae to alternate continuously between a weaker and stronger peristalsis wave (see A tail speed for an example). The angular velocity of the anterior body (blue) shows a slower rhythm than the peristalsis, with a higher variation across and within individuals. Note that both rhythms are not multiple of each other, suggesting that they are operated independently.
 {\bf  E,F.} Anterior body angular velocity (E) and body bending (F) plotted against tail speed for a random selection of points across all larvae track (blue). Red line shows the ratio of data that are higher than current x value. Black line shows the ratio of such data (higher than current x value) that are below the tail speed threshold (dash line). Although there are no clear cut categories, anterior body angular velocity seems a better predictor of peristalsis inhibition than body bending.
-\label{fig:Fig2}}
-\end{center}
+}
+\hrule
 \end{figure}
 
 
@@ -552,6 +563,7 @@ Left hand side graphs show the history of angular speed of the anterior part of 
 \includegraphics[width=110mm]{figures/Fig3_orbital.pdf}
 \caption{{\bf Typical path signatures for larvae and simulation.} Example of paths {\bf (A,B)} and distributions of bearings to odour {\bf (C,D)} for larvae and simulation. Both larvae and simulated agent tends to spend most time with the odour located on their sides (-90 and 90 degrees), which can be branded as orbital behaviour. In both model and simulation, orbital behaviour is emphasized during peristalsis forward motion (i.e. turn <30deg for the model) (C. blue curve), and when the larvae/agent is more than 1cm away from the odour ({\bf D}. green curve). Segmented search, in contrast, is constituted of regular large turns that happen mostly while the larvae/agent is looking away from the odour ({\bf C.} red curve), and is rather apparent when the larvae/agent is close to the odour ({\bf D.} blue curve).
 \label{fig:Fig3}}
+\hrule
 \end{center}
 \end{figure}
 
@@ -563,6 +575,7 @@ Left hand side graphs show the history of angular speed of the anterior part of 
 {\bf A.} Time occupancy spatial maps for different tested genotype with re-engineered peripheral olfactory circuits tested in the near-source paradigm (30 mM odour source): wild type (N=42 flies), Or42a ectopically expressed in the 21 intact ORNs (all neuron pairs active, N=38), Or42a single-functional ORN (one pair of neuron active, N=37), and Orco null (anosmic flies, N=55) reproduce from Gomez-Marin et al., 2011.
 {\bf B}) Agent simulated paths given different transient-to-turn modulation gain seem to capture the signature observed in larvae; suggesting that activity of the OSN sum up so that higher activity as a group leads to a stronger turning modulation signal.
 \label{fig:Fig4}}
+\hrule
 \end{center}
 \end{figure}
 
@@ -572,6 +585,7 @@ Left hand side graphs show the history of angular speed of the anterior part of 
 \includegraphics[width=110mm]{figures/Fig5_conc_learn.pdf}
 \caption{{\bf Effect of odour concentration and appetitive on bearing to odour distribution and rate of turns.} Real larva data (top) are drawn from \citep{schleyer2015learning}. In our simulation (bottom; shows mean $\pm$ standard deviation) turning events were categorised has large turns (>30 degrees) that are not followed by another large turn. In the case were these final large turn were preceded by a large turn, the bearing of the previous rather than the final turn was monitored. Changes in concentration were obtained by multiplying the gradient by a factor 0, 1 or 2. Learning was modelled as a change in transient-to-turn modulation gain (0, -2 or -5). 
 \label{fig:Fig5}}
+\hrule
 \end{center}
 \end{figure}
 
@@ -583,6 +597,7 @@ Preference index (left graphs) and final distance to odour (right graphs) as cal
 {\bf A,B.} Given biologically relevant bounds, preference index seems to vary roughly linearly with transient-to-turn modulation gain. For comparison, real larvae data (grey boxes) are drawn from appetitive learning in Schleyer et al., 2011.
 {\bf C,D.} Impact on noise on preference index (C) and distance to odour (D). Noise values correspond to the standard deviation of the normal distribution from which the noisy angle is drawn at each step.
 \label{fig:Fig6}}
+\hrule
 \end{center}
 \end{figure}
 
@@ -592,6 +607,7 @@ Preference index (left graphs) and final distance to odour (right graphs) as cal
 \caption{{\bf Sensory history and monotonic decrease in concentration.} {\bf A,B.} Example of simulated path and the associated sensory history given the background and transient odour concentration.
 {\bf  C.} Average ($\pm 95\%$CI) and individual’s example of the sensory history experienced before and after large turn events (>90degrees) in our simulation. For all large turns (black), or only the large turns that result in experiencing a positive (red) or a negative transient (blue). A slow monotonic decrease in concentration precedes large turns even though turns are the consequence of the transient experienced during the previous step only.
 \label{fig:Fig7}}
+\hrule
 \end{center}
 \end{figure}
 
@@ -603,6 +619,7 @@ Preference index (left graphs) and final distance to odour (right graphs) as cal
 {\bf A.} Integral of the turning direction for the correct side (i.e. towards the odour; 1st column ‘C’) and wrong side (second column ‘W’). Higher signals (i.e. increased concentration or stronger transient-to-turn modulation gain) increase the bias.
 {\bf B.} Turning direction (mean $\pm$ standard deviation) given the bearing to odour. Green and red zones indicate turn towards (i.e. correct side) or away (i.e. wrong side) from the odour respectively. Noise =10. Time=800. 1000 larvae ($n > 25000$ for each group)
 \label{fig:Fig8}}
+\hrule
 \end{center}
 \end{figure}
 
@@ -615,6 +632,7 @@ Preference index (left graphs) and final distance to odour (right graphs) as cal
 {\bf B.}) Gustatory index as calculated by the ratio of 30 simulated larvae ending up on the fructose side/other side after 3 minutes is shown across signal-to-turn modulation gain for phasic and tonic signals. Only negative gain given phasic signal seems to explain the positive gustatory index shown in real larvae in presence of fructose (Schleyer et al., 2011).
 {\bf C,D.} Example of section of paths taken by the agent illustrating response to phasic (left) and tonic (right) signal in the presence of fructose (green area) (see Figure \ref{fig:Fig1} for specifics).
 \label{fig:Fig9}}
+\hrule
 \end{center}
 \end{figure}
 
@@ -628,6 +646,7 @@ Preference index (left graphs) and final distance to odour (right graphs) as cal
 {\bf E.} Model dynamics during chemotaxis trajectory, showing $E_L$ and  $E_R$, $\theta'$ and the $A$ input as influenced by the moving larva in the environment. Under high-gain the turns appear sharper.
 {\bf F.} Effects of unit-step perturbations on bearing angle of an oscillator model coupled to a simple larva head model across oscillator phase. Panels below show the simultaneous state of the head angular velocity, an example input from $A$ and the respective state of neural bursts from $E_L$ and $E_R$ (here shown unperturbed by the input $A$).
 \label{fig:LampreyModel}}
+\hrule
 \end{center}
 \end{figure}
 
@@ -639,6 +658,7 @@ Preference index (left graphs) and final distance to odour (right graphs) as cal
 {\bf C.} Conceptual scheme illustrating our overall view: all modalities, innate and learnt, tonic (full line) or phasic (dashed line) signals are integrated at their zone of convergence. The summed signal is sent to both 1-the neural oscillator mediating turning of the anterior body and localised in the thoracic segment (blue), and 2- motor neurons along the abdominal segments to mediate peristalsis inhibition (green). MB: Mushroom body, where signal weightings can be modulated given the co-activation of a reinforcer neuron (R).
 {\bf D.} Qualitative prediction of the anterior body angular velocity (blue) and tail speed velocities (green) as a result of the summed sensory signal perceived. Growing signal strength increases anterior body turning and inhibits crawling speed simultaneously. If the signal is sufficiently strong peristalsis disruption happens, leading to an abrupt drop of tail speed velocities. The relaxing of the synchronous left right body contraction during peristalsis enhances the reaction to the thoracic left right asynchronous contraction resulting in sharp increase in body turning. Peristalsis spontaneously resumes when the sensory command lowers below peristalsis disruption threshold. This continuous view explains the emergence of straight run, weathervaning and the stop and head-casts actions observed in larvae.
 \label{fig:Fig11}}
+\hrule
 \end{center}
 \end{figure}
 
@@ -651,6 +671,7 @@ Preference index (left graphs) and final distance to odour (right graphs) as cal
 In the agent's 2D environment the drift speed is the change in the bearing to odour at each time-step, which increases inversely proportionally to the radius of the orbit and is maximal when moving along the tangent. When making a step tangentially, if the tracking point lags the $\pi/2$ point, the curvature of the orbit will increase and therefore the radius,which results in lowering the drift speed $\delta$.   
  The steady state radius, and thus the path's curvature, will stabilize at the point where the size of the drift at each step is recovered by the algorithm's tracking step. 
 \label{fig:AlgoAnalysis}}
+\hrule
 \end{center}
 \end{figure}
 
