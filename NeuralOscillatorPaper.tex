@@ -562,17 +562,17 @@ In the agent's 2D environment the drift speed is the change in the bearing to od
 \beginsupplement
 \subsection{Understanding the discrete agent's algorithm}
 \label{sec:AlgoExplain}
-The algorithm described of Equation \eqref{eqn:Discretemodel} generates a sequence of orientation angles $\{\theta_n\}$. Each $\theta_{n+1}$ changes by a fixed amount $G T_b$ and by an amount $\nabla s_{n-1})$ that varies according to the change in the stimulus gradient in the last two steps.
- Ignoring the hard-limit function and the fixed turning amount $G T_b$, our model's equation is rewritten as:
+The algorithm described of Equation \eqref{eqn:Discretemodel} generates a sequence of orientation angles $\{\theta_n\}$. Each $\theta_{n+1}$ changes by a fixed amount $G T_b$ and by an amount $\nabla s_{n-1}$ that varies according to the change in the stimulus gradient between  the last two steps.
+By initially ignoring the hard-limit $H(x)$ function  and the fixed turning amount $G T_b$, our model's equation is rewritten as:
 \begin{equation}
  \theta_n = \theta_{n-1} - G (\nabla s_{n-1}){(-1)}^n,
 \end{equation}
-reveals its similarity to the classic line search gradient method :
+such that it reveals its similarity to the classic line search gradient method :
 \begin{align}
-x_n &= x_{n-1} - \lambda \nabla f(x_{n-1})
+x_n &= x_{n-1} - \lambda \nabla f(x_{n-1}).
 \label{eqn:graddescent}
 \end{align}
-known to weakly converge to a minimum when $f(x)$ is continuous real-valued function that has unique minimum for some fixed or variable step-size $\lambda$ starting from an initial guess $x_0$ \citep{armijo1966minimization}. Changing the sign of the above equation, will revert its convergence to the $f(x)$'s maximum. In our model the gradient's sign alternates at each step but looking at odd and even $n$ steps we find that the algorithm remains the same, with the addition of a fixed $T_b$ offset :
+This method is known to weakly converge to a minimum when $f(x)$ is continuous real-valued function that has unique minimum for some fixed or variable step-size $\lambda$ starting from an initial guess $x_0$ \citep{armijo1966minimization}. Changing the sign of the above equation, will revert its convergence to the $f(x)$'s maximum. In our model the gradient's sign alternates at each step but looking at odd and even $n$ steps we find that the algorithm remains the same, with the addition of a fixed $T_b$ offset :
 \begin{equation}
 \theta_n - \theta_{n-1} = 
 \begin{cases}
@@ -619,13 +619,13 @@ d\frac{f(x)}{dx} = \frac{f(b) - f(a)}{b-a}
 \end{equation}
 against our stimulus sampling function in the absence of an odour gradient:
 \begin{align}
-\nabla s(\theta_n) &= s(\theta_n) - s(\theta_{n-1})\\
+\nabla s(\theta_n) &= s(\theta_n) - s(\theta_{n-1})\nonumber \\
 				   &= s(\theta_n) - s(\theta_{n} - G T_b)
 \end{align}
 which if we divide both sides by $G T_b$ we have  according to the mean value theorem can then be rewritten as :
 \begin{align}
-\nabla s(\theta_n)/G T_b &= d\frac{s(\theta)}{d\theta}
- \nabla s(\theta_n) &= G T_b \frac{s(\theta_n)}{d\theta_n},
+\nabla s(\theta_n)/G T_b &= d\frac{s(\theta)}{d\theta} \nonumber \\
+       \nabla s(\theta_n) &= G T_b \frac{s(\theta_n)}{d\theta_n},
 \end{align}
 thus we see that $T_b$ scales the derivative of the stimulus function at point $\theta_n$. Therefore, increasing the baseline oscillation angle of the larva's head effectively increases its sensory gain.
 In the one dimensional Gaussian, when the sampling angle value $G T_b = Pi/3$ we get $\nabla s(\theta_n) \approx d\frac{s(\theta)}{d\theta}$, thus the sampled derivative between two points $Pi/3$ apart approximates the infinitesimal one obtained analytically.
@@ -694,7 +694,7 @@ $S(t \leq 0) $ & $M(x(0),y(0))$ \\ \hline
 \paragraph{Obtaining the frequency spectrum of head velocities}
 We sample the head speed of each larva trajectory at $\Delta t = 1/10$ and then perform a discrete Fourier transform of each of the head speed vector $\theta'^j$ of trajectory $j$ :
 \begin{equation}
-F_{s,r}^j = \frac{1}{\sqrt{n}} \sum_{r=1}^n \exp{[2 \pi i \frac{ (s-1)(r-1)}{n}]} \frac{d\theta_r^j}{dt}.
+F_{s,r}^j = \frac{1}{\sqrt{n}} \sum_{r=1}^n \exp{\left[2 \pi i \frac{ (s-1)(r-1)}{n}\right]} \frac{d\theta_r^j}{dt}.
 \end{equation}
 The spectrum plot is obtain by taking the mean of each speed vector spectrum out of $n=25$ trajectories with their starting points placed distributed according to squared matrix of points centred on the odour source. Each trajectory is obtained by setting the initial conditions $x(0),y(0)$ to point on the matrix with a distance of 1cm of each other.
 
