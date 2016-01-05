@@ -694,7 +694,7 @@ $S(t \leq 0) $ & $M(x(0),y(0))$ \\ \hline
 \paragraph{Obtaining the frequency spectrum of head velocities}
 We sample the head speed of each larva trajectory at $\Delta t = 1/10$ and then perform a discrete Fourier transform of each of the head speed vector $\theta'^j$ of trajectory $j$ :
 \begin{equation}
-F_{s,r}^j = \frac{1}{\sqrt{n}} \sum_{r=1}^n \exp{\left[2 \pi i \frac{ (s-1)(r-1)}{n}\right]} \frac{d\theta_r^j}{dt}.
+F_{s,r}^j = \frac{1}{\sqrt{n}} \sum_{r=1}^n \exp{\left[ 2 \pi i \frac{ (s-1)(r-1)}{n}\right]} \frac{d\theta_r^j}{dt}.
 \end{equation}
 The spectrum plot is obtain by taking the mean of each speed vector spectrum out of $n=25$ trajectories with their starting points placed distributed according to squared matrix of points centred on the odour source. Each trajectory is obtained by setting the initial conditions $x(0),y(0)$ to point on the matrix with a distance of 1cm of each other.
 
