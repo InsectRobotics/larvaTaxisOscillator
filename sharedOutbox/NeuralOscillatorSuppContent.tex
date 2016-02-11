@@ -13,9 +13,17 @@
 \begin{center}
 \includegraphics[width=105mm]{figures/FigS1_decoupling.pdf}
 \caption{{\bf Peristalsis and lateral oscillations’ rhythmic activities appear decoupled.} {\bf A.} During forward crawling, the speed of the tail, middle spine point and head show a strongly correlated rhythm characteristic of the peristalsis motion (Note that some individuals display a continuous alternation between a strong and a weak step). We used tail speed to characterise peristalsis motion as it is the least sensitive to the lateral motion of the anterior body.
-{\bf B,C.} Anterior body angular velocity and, to a lesser extent body bending, are representative of the rhythmic activity of the continuous lateral oscillations displayed by the larva (see Figure \ref{fig:MethodAgent}). However, the distribution of anterior body angular velocities (B); and body bending angles (C) is similar whether sampled across all frames or during specific phases of the peristalsis rhythm such as peaks of tail speed. {\bf D.} Similarly, the distribution of tail speed during forward motion (tail speed >0.4) is similar whether sampled across all frames or during specific phases of the anterior body angular velocity and body bending activities. Together with the fact their rhythms’ mean frequency are not harmonics (Figure \ref{fig:MethodAgent}D), this suggests that that the peristalsis and lateral oscillations’ rhythms are generated independently. 
  \label{fig:FigS2}}
 \end{center}
+\end{figure}
+
+
+
+\begin{figure}
+\ContinuedFloat
+\caption{
+{\bf B,C.} Anterior body angular velocity and, to a lesser extent body bending, are representative of the rhythmic activity of the continuous lateral oscillations displayed by the larva (see Figure \ref{fig:MethodAgent}). However, the distribution of anterior body angular velocities (B); and body bending angles (C) is similar whether sampled across all frames or during specific phases of the peristalsis rhythm such as peaks of tail speed. {\bf D.} Similarly, the distribution of tail speed during forward motion (tail speed >0.4) is similar whether sampled across all frames or during specific phases of the anterior body angular velocity and body bending activities. Together with the fact their rhythms’ mean frequency are not harmonics (Figure \ref{fig:MethodAgent}D), this suggests that that the peristalsis and lateral oscillations’ rhythms are generated independently.
+\label{fig:FigS2}}
 \end{figure}
 
 
@@ -41,19 +49,19 @@ The baseline angle corresponds to the extent of the spontaneous lateral oscillat
 \label{fig:FigS1}}
 \end{center}
 \end{figure}
-
-\begin{figure}
-\begin{center}
-\includegraphics[width=105mm]{figures/AlgoFigureSupp.pdf}
-\caption{{\bf Discrete agent implements a line search algorithm} {\bf A.} Convergence towards peak of Gaussian at 0 angle starting from $-Pi$ and $,Pi$. The speed increases under a doubling of the baseline oscillation angle $T_b$, with a further increase with a doubling of gain $G$.    
-{\bf B.} Pairs of $\theta_n$ and $\theta_{n-1}$ positions can be seen to represent the position of the left (right) and right (black) sampling points. At each $n$ these progressively slide towards the peak. Their displacement stops when they sit at equal distance from the peak, at $G T_b$ apart, where the difference in $\nabla s(\theta_{n-1})$ goes to zero and thus the algorithm converges with the peak being in the middle between the sampling points $\theta^{\star} =\frac{\theta_{n-1}+\theta_n}{2}$.
-{\bf C.} When the objective function is drifting at a speed $\delta$ the convergence point may move to a new suboptimal equilibrium. The distance of this new convergence point from the peak $\theta^{\star}$, is reflects the ability of the algorithm to track a moving peak. Although the drift speed here is artificial, it is these dynamics that give rise to the orbital behaviour with the curvature being determined by the ability of the algorithm to track the peak under growing drift speed $\delta$. 
-In the agent's 2D environment the drift speed is the change in the bearing to odour at each time-step, which increases inversely proportionally to the radius of the orbit and is maximal when moving along the tangent. %When making a step tangentially, if the tracking point lags the $\pi/2$ point, the curvature of the orbit will increase and therefore the radius,which results in lowering the drift speed $\delta$.   
- The steady state radius, and thus the path's curvature, will stabilize at the point where the size of the drift at each step is recovered by the algorithm's tracking step. 
-\label{fig:AlgoAnalysis}}
-\hrule
-\end{center}
-\end{figure}
+%
+%\begin{figure}
+%\begin{center}
+%\includegraphics[width=105mm]{figures/AlgoFigureSupp.pdf}
+%\caption{{\bf Discrete agent implements a line search algorithm} {\bf A.} Convergence towards peak of Gaussian at 0 angle starting from $-Pi$ and $,Pi$. The speed increases under a doubling of the baseline oscillation angle $T_b$, with a further increase with a doubling of gain $G$.    
+%{\bf B.} Pairs of $\theta_n$ and $\theta_{n-1}$ positions can be seen to represent the position of the left (right) and right (black) sampling points. At each $n$ these progressively slide towards the peak. Their displacement stops when they sit at equal distance from the peak, at $G T_b$ apart, where the difference in $\nabla s(\theta_{n-1})$ goes to zero and thus the algorithm converges with the peak being in the middle between the sampling points $\theta^{\star} =\frac{\theta_{n-1}+\theta_n}{2}$.
+%{\bf C.} When the objective function is drifting at a speed $\delta$ the convergence point may move to a new suboptimal equilibrium. The distance of this new convergence point from the peak $\theta^{\star}$, is reflects the ability of the algorithm to track a moving peak. Although the drift speed here is artificial, it is these dynamics that give rise to the orbital behaviour with the curvature being determined by the ability of the algorithm to track the peak under growing drift speed $\delta$. 
+%In the agent's 2D environment the drift speed is the change in the bearing to odour at each time-step, which increases inversely proportionally to the radius of the orbit and is maximal when moving along the tangent. %When making a step tangentially, if the tracking point lags the $\pi/2$ point, the curvature of the orbit will increase and therefore the radius,which results in lowering the drift speed $\delta$.   
+% The steady state radius, and thus the path's curvature, will stabilize at the point where the size of the drift at each step is recovered by the algorithm's tracking step. 
+%\label{fig:AlgoAnalysis}}
+%\hrule
+%\end{center}
+%\end{figure}
 
 \begin{table}[ht!]
  \centering
@@ -91,112 +99,112 @@ $S(t \leq 0) $ & $M(x(0),y(0))$ \\ \hline
 \end{table}
 
 \clearpage
-\subsection{Understanding the discrete agent's algorithm}
-\label{sec:AlgoExplain}
-The algorithm described by the equation :
-\begin{align}
-\theta_n &= \theta_{n-1} + G H(T_b - \nabla s_{n-1}){(-1)}^n,
-\label{eqn:DiscretemodelSupp}
-\end{align}
- generates a sequence of orientation angles $\{\theta_n\}$. Each $\theta_{n+1}$ changes by a fixed amount $G T_b$ and by an amount $\nabla s_{n-1}$ that varies according to the change in the stimulus gradient between  the last two steps.
-By initially ignoring the hard-limit $H(x)$ function  and the fixed turning amount $G T_b$, our model's equation is rewritten as:
-\begin{equation}
- \theta_n = \theta_{n-1} - G (\nabla s_{n-1}){(-1)}^n,
-\end{equation}
-such that it reveals its similarity to the classic line search gradient method :
-\begin{align}
-x_n &= x_{n-1} - \lambda \nabla f(x_{n-1}).
-\label{eqn:graddescent}
-\end{align}
-This method is known to weakly converge to a minimum when $f(x)$ is continuous real-valued function that has unique minimum for some fixed or variable step-size $\lambda$ starting from an initial guess $x_0$ \citep{armijo1966minimization}. Changing the sign of the above equation, will revert its convergence to the $f(x)$'s maximum. In our model the gradient's sign alternates at each step but looking at odd and even $n$ steps we find that the algorithm remains the same, with the addition of a fixed $T_b$ offset :
-\begin{equation}
-\theta_n - \theta_{n-1} = 
-\begin{cases}
-+G (T_b - \nabla s_{n-1}) \mbox { for n even}\\
-+G (\nabla s_{n-1}-T_b) \mbox { for n odd}
-\end{cases}.
-\label{eq:oddevenPairs}
-\end{equation}
- To understand our algorithm's principle of operation, we will therefore consider the even and odd points as pairs, essentially the pair of the last two points $\theta_n$ and $\theta_{n-1}$ and  initially assume that the stimulus is given by a function defined on the real-line continuous in $\{-2 \pi , 2 pi\}$, which has a maximum point $f(\theta^\star)=inf f(\theta)$.
-  These conditions can be seen to represent the agent pinned at one location in the odour gradient, where its allowed to rotate so as to reorient, but it is does not move towards any direction (i.e its step size is zero). As Figure \ref{fig:AlgoAnalysis}B shows, in that case the agent will be sampling from what appears to be a section through the odour gradient which we simplify to a Gaussian :
-\begin{equation}
-S(\theta) = \exp\left({\frac{(\theta-\mu)^2}{2 \sigma^2}}\right),
-\end{equation}
-which has maximum at $\theta^\star = \mu =0$.
-
-Depending on the initial conditions for $\theta_0$ and $\theta_1$, on of the points in the pair will be the left-most and the other right most, and this relationship will be maintain throughout $n$ due to the hard-limit function $H(x)$ not allowing a cross-over of the points. With this relationship maintained, we draw attention to the trivial fact that when the sampled gradient $|\nabla s_n| > 0$, its sign depends on the direction of movement. Thus if $\nabla s_n \geq 0$ then $\nabla s_{n-1} \leq 0$. Therefore, if we the sampled gradient  increases during an even step, it will drop during a odd step and vice-versa, so in this case we can rewrite the pair of Eq.\eqref{eq:oddevenPairs} as: 
-\begin{equation}
-\theta_n - \theta_{n-1} = 
-\begin{cases}
-+G (T_b \pm |\nabla s_{n-1}|) \mbox { for n even}\\
-+G (-T_b \mp|\nabla s_{n-1}|) \mbox { for n odd}
-\end{cases},
-\label{eq:oddevenPairs2}
-\end{equation}
-which  when compared to \eqref{eqn:graddescent} essentially reveals the nature of the algorithm is two linked gradient ascent processes with an added offset bias $\pm T_b$ and a hard-limit $H(x)$ bounding $\nabla s_{n-1} \leq T_b$. These can be visualized as a pair of points updated sequentially moving towards the $\theta^\star$.  Figure \ref{fig:AlgoAnalysis}C shows the movement of the last pairs of positions for $n$ odd (red) and even (black) after $n=20$ steps towards convergence. We see that the two positions move towards the peak in sequence and incrementally, without crossing over each other. The distance between them increases when the red point moves and decreases on the next step when the black dot moves up-gradient reaching the red dot. In this example setting the two positions have converged by step $n>50$, where the distance between them is $G T_b$ and remains so because they are equally spaced from the the peak $\theta^\star$ which results in no difference between the sampled  points, i.e. $\nabla s(\theta_n) = 0$.
-Figure \ref{fig:AlgoAnalysis}A shows that the algorithm will converge to the peak of a $\sigma=Pi/2$  Gaussian even when starting from distant ends of $\pm 2\sigma$ away from the peak. Doubling the gain to $G=2$, the baseline sampling angle $T_b$, or both, increases convergence speed synergistically.
-
- 
-Having seen the step-wise convergence of the algorithm, and the change in its speed of convergence as we vary $G$ and $T_b$, we are now in position to explain how orbits arise.
-Letting $\alpha > 0$ in our example setting, shown on Figure \ref{fig:AlgoAnalysis}B, will set our little model animal free to run straight towards its initial heading. At the starting point the bearing to peak is $\theta_0$. As the travelled distance $x$ along the straight line (red arrow ) increases, the initial bearing to the peak $\theta_0$ will change by an amount $\delta$. 
-This $\delta$ is seen as a shift of $s(\theta)$ sliding left or right at every step the agent makes. 
-We can derive an expression for slide speed as $\delta = \frac{d\theta}{dr}\frac{dr}{dx} $, by finding the derivative for the change of bearing against a change in the distance from peak $r$, and the derivative for the change of distance from source $r$ against a change in position $x$ along the straight trajectory. Thus starting from the fact that : 
-\begin{align}
-\frac{d\theta}{dr} = \frac{d\sin^{-1}(\frac{n}{r})}{dr}
-\end{align}
- we use implicit differentiation :
-\begin{align}
-\frac{d \sin(\theta)}{dr} &= \frac{d n}{d r}\\
-\cos(\theta) \frac{d \theta}{dr} &= \frac{n}{r^2}\\
-\frac{d \theta}{dr} &= \frac{n}{r^2 \cos(\theta) }.
-\end{align}
-Next, we derive $\frac{dr}{dx}$. Knowing that $r$ is the Euclidean distance from peak to the agents position, this is simply:
-\begin{align}
-\frac{dr}{dx} &= \frac{d}{dx}\sqrt{n^2+x^2}\\
-&=\frac{x}{\sqrt{n^2+x^2}}.
-\end{align}
- Now we can put the derivatives together and simplify using the fact that $x=r \cos(\theta)$ and $n=r \sin(\theta)$ :
-\begin{align}
-\frac{d \theta}{dr}\frac{dr}{dx} &= \frac{x}{\sqrt{n^2+x^2}} \frac{n}{r^2 \cos(\theta) } \\
-&= \frac{r \cos(\theta)}{\sqrt{n^2+x^2}} \frac{r \sin(\theta)}{r^2 \cos(\theta) }\\
-&= \frac{\sin(\theta)}{r}.
-\end{align}
-therefore bearing slide speed as the agent moves straight  a small distance $dx$ is a function of the distance from the odour source $r$ and of the initial bearing of the larva to the source $\theta$.
- Finally for a step movement of size $\alpha$ we write:
-\begin{equation}
-\delta(r,\theta,\alpha) = \frac{\sin(\theta)\alpha}{r},
-\label{eq:driftSpeed}
-\end{equation}
-therefore bearing slide speed is a function of the distance $r$ and of the initial bearing of the larva to the peak $\theta$ and proportional to the agents step size $\alpha$. The slide speed is maximized when the peak is at $90$ degrees to the agents heading.
-
-Thus it becomes clear that as the agent moves a step $\alpha$ the algorithm is faced with tracking a peak that also moves at every step by an angle $\delta(r,\theta,\alpha)$.
-Figure \ref{fig:AlgoAnalysis}D examines the convergence given that the objective function is now sliding with a constant speed $\delta$. Given that as we have seen $\delta$ is not constant for a moving agent,  we nevertheless use this simple artificial scenario to show that under these conditions the algorithm no longer converges the peak  but at an offset from it that increases with $\delta$.
- Increasing $\delta$ further will reach a point when the algorithms peak-tracking speed is not sufficient and thus the algorithm fails to track the peak. The tracking speed, is as expected, controlled by the same parameters that determine the convergence speed of the algorithm ($G, T_b$). 
- 
-Thus, depending on the ability of the agent to track a moving peak, the trajectory will either converge to an orbit at a distance where the sliding speed matches the algorithms tracking speed, or alternatively, the agent  accurately tracks the peak and passes over it.
- Under these circumstances the agent displays the characteristic crossing segments of the odour source, as once the agent passes over the peak  $\theta_n$ of the algorithm is suddenly reset to 180 degrees and new search for the peak begins, resulting overall in sharp.
-The consequence of the above explanation is that since the $\delta$ is function of the agent's step size $\alpha$, then slowing down the agent's forward motion improves its ability to track the odour source. 
-
-
-\paragraph{Effect of Baseline angle $T_b$}
-Consider the mean value theorem :
-\begin{equation}
-d\frac{f(x)}{dx} = \frac{f(b) - f(a)}{b-a}
-\end{equation}
-against our stimulus sampling function in the absence of an odour gradient:
-\begin{align}
-\nabla s(\theta_n) &= s(\theta_n) - s(\theta_{n-1})\nonumber \\
-				   &= s(\theta_n) - s(\theta_{n} - G T_b).
-\end{align}
-Then according to the mean value theorem, if we divide both sides by $G T_b$ we then can rewrite as :
-\begin{align}
-\nabla s(\theta_n)/G T_b &= d\frac{s(\theta)}{d\theta} \nonumber \\
-       \nabla s(\theta_n) &= G T_b \frac{s(\theta)}{d\theta},
-\end{align}
-thus we see that $T_b$ scales the derivative of the stimulus function at $\theta$, multiplicatively to the gain. Therefore, increasing the baseline oscillation angle of the larva's head effectively increases its sensory gain. Nevertheless, the  
-
-In the one dimensional Gaussian case, setting $T_b = 0$ would make sequence of points stationary and thus in effect impair the tracking ability of the algorithm. In the 2D case however, the agent's continuous forward stepping modify the bearing to peak angle on each step according to equation \eqref{eq:driftSpeed}, thus $\nabla s(\theta_n) \geq 0$  and sampling will still exist (see Figure \ref{fig:FigS1} for a few sample 2D paths with changing $T_b$).
-As a side note, setting $G T_b = Pi/3$ will give $\nabla s(\theta_n) \approx d\frac{s(\theta)}{d\theta}$, thus the sampled derivative between two points $Pi/3$ apart approximates the infinitesimal one obtained analytically.
+%\subsection{Understanding the discrete agent's algorithm}
+%\label{sec:AlgoExplain}
+%The algorithm described by the equation :
+%\begin{align}
+%\theta_n &= \theta_{n-1} + G H(T_b - \nabla s_{n-1}){(-1)}^n,
+%\label{eqn:DiscretemodelSupp}
+%\end{align}
+% generates a sequence of orientation angles $\{\theta_n\}$. Each $\theta_{n+1}$ changes by a fixed amount $G T_b$ and by an amount $\nabla s_{n-1}$ that varies according to the change in the stimulus gradient between  the last two steps.
+%By initially ignoring the hard-limit $H(x)$ function  and the fixed turning amount $G T_b$, our model's equation is rewritten as:
+%\begin{equation}
+% \theta_n = \theta_{n-1} - G (\nabla s_{n-1}){(-1)}^n,
+%\end{equation}
+%such that it reveals its similarity to the classic line search gradient method :
+%\begin{align}
+%x_n &= x_{n-1} - \lambda \nabla f(x_{n-1}).
+%\label{eqn:graddescent}
+%\end{align}
+%This method is known to weakly converge to a minimum when $f(x)$ is continuous real-valued function that has unique minimum for some fixed or variable step-size $\lambda$ starting from an initial guess $x_0$ \citep{armijo1966minimization}. Changing the sign of the above equation, will revert its convergence to the $f(x)$'s maximum. In our model the gradient's sign alternates at each step but looking at odd and even $n$ steps we find that the algorithm remains the same, with the addition of a fixed $T_b$ offset :
+%\begin{equation}
+%\theta_n - \theta_{n-1} = 
+%\begin{cases}
+%+G (T_b - \nabla s_{n-1}) \mbox { for n even}\\
+%+G (\nabla s_{n-1}-T_b) \mbox { for n odd}
+%\end{cases}.
+%\label{eq:oddevenPairs}
+%\end{equation}
+% To understand our algorithm's principle of operation, we will therefore consider the even and odd points as pairs, essentially the pair of the last two points $\theta_n$ and $\theta_{n-1}$ and  initially assume that the stimulus is given by a function defined on the real-line continuous in $\{-2 \pi , 2 pi\}$, which has a maximum point $f(\theta^\star)=inf f(\theta)$.
+%  These conditions can be seen to represent the agent pinned at one location in the odour gradient, where its allowed to rotate so as to reorient, but it is does not move towards any direction (i.e its step size is zero). As Figure \ref{fig:AlgoAnalysis}B shows, in that case the agent will be sampling from what appears to be a section through the odour gradient which we simplify to a Gaussian :
+%\begin{equation}
+%S(\theta) = \exp\left({\frac{(\theta-\mu)^2}{2 \sigma^2}}\right),
+%\end{equation}
+%which has maximum at $\theta^\star = \mu =0$.
+%
+%Depending on the initial conditions for $\theta_0$ and $\theta_1$, on of the points in the pair will be the left-most and the other right most, and this relationship will be maintain throughout $n$ due to the hard-limit function $H(x)$ not allowing a cross-over of the points. With this relationship maintained, we draw attention to the trivial fact that when the sampled gradient $|\nabla s_n| > 0$, its sign depends on the direction of movement. Thus if $\nabla s_n \geq 0$ then $\nabla s_{n-1} \leq 0$. Therefore, if we the sampled gradient  increases during an even step, it will drop during a odd step and vice-versa, so in this case we can rewrite the pair of Eq.\eqref{eq:oddevenPairs} as: 
+%\begin{equation}
+%\theta_n - \theta_{n-1} = 
+%\begin{cases}
+%+G (T_b \pm |\nabla s_{n-1}|) \mbox { for n even}\\
+%+G (-T_b \mp|\nabla s_{n-1}|) \mbox { for n odd}
+%\end{cases},
+%\label{eq:oddevenPairs2}
+%\end{equation}
+%which  when compared to \eqref{eqn:graddescent} essentially reveals the nature of the algorithm is two linked gradient ascent processes with an added offset bias $\pm T_b$ and a hard-limit $H(x)$ bounding $\nabla s_{n-1} \leq T_b$. These can be visualized as a pair of points updated sequentially moving towards the $\theta^\star$.  Figure \ref{fig:AlgoAnalysis}C shows the movement of the last pairs of positions for $n$ odd (red) and even (black) after $n=20$ steps towards convergence. We see that the two positions move towards the peak in sequence and incrementally, without crossing over each other. The distance between them increases when the red point moves and decreases on the next step when the black dot moves up-gradient reaching the red dot. In this example setting the two positions have converged by step $n>50$, where the distance between them is $G T_b$ and remains so because they are equally spaced from the the peak $\theta^\star$ which results in no difference between the sampled  points, i.e. $\nabla s(\theta_n) = 0$.
+%Figure \ref{fig:AlgoAnalysis}A shows that the algorithm will converge to the peak of a $\sigma=Pi/2$  Gaussian even when starting from distant ends of $\pm 2\sigma$ away from the peak. Doubling the gain to $G=2$, the baseline sampling angle $T_b$, or both, increases convergence speed synergistically.
+%
+% 
+%Having seen the step-wise convergence of the algorithm, and the change in its speed of convergence as we vary $G$ and $T_b$, we are now in position to explain how orbits arise.
+%Letting $\alpha > 0$ in our example setting, shown on Figure \ref{fig:AlgoAnalysis}B, will set our little model animal free to run straight towards its initial heading. At the starting point the bearing to peak is $\theta_0$. As the travelled distance $x$ along the straight line (red arrow ) increases, the initial bearing to the peak $\theta_0$ will change by an amount $\delta$. 
+%This $\delta$ is seen as a shift of $s(\theta)$ sliding left or right at every step the agent makes. 
+%We can derive an expression for slide speed as $\delta = \frac{d\theta}{dr}\frac{dr}{dx} $, by finding the derivative for the change of bearing against a change in the distance from peak $r$, and the derivative for the change of distance from source $r$ against a change in position $x$ along the straight trajectory. Thus starting from the fact that : 
+%\begin{align}
+%\frac{d\theta}{dr} = \frac{d\sin^{-1}(\frac{n}{r})}{dr}
+%\end{align}
+% we use implicit differentiation :
+%\begin{align}
+%\frac{d \sin(\theta)}{dr} &= \frac{d n}{d r}\\
+%\cos(\theta) \frac{d \theta}{dr} &= \frac{n}{r^2}\\
+%\frac{d \theta}{dr} &= \frac{n}{r^2 \cos(\theta) }.
+%\end{align}
+%Next, we derive $\frac{dr}{dx}$. Knowing that $r$ is the Euclidean distance from peak to the agents position, this is simply:
+%\begin{align}
+%\frac{dr}{dx} &= \frac{d}{dx}\sqrt{n^2+x^2}\\
+%&=\frac{x}{\sqrt{n^2+x^2}}.
+%\end{align}
+% Now we can put the derivatives together and simplify using the fact that $x=r \cos(\theta)$ and $n=r \sin(\theta)$ :
+%\begin{align}
+%\frac{d \theta}{dr}\frac{dr}{dx} &= \frac{x}{\sqrt{n^2+x^2}} \frac{n}{r^2 \cos(\theta) } \\
+%&= \frac{r \cos(\theta)}{\sqrt{n^2+x^2}} \frac{r \sin(\theta)}{r^2 \cos(\theta) }\\
+%&= \frac{\sin(\theta)}{r}.
+%\end{align}
+%therefore bearing slide speed as the agent moves straight  a small distance $dx$ is a function of the distance from the odour source $r$ and of the initial bearing of the larva to the source $\theta$.
+% Finally for a step movement of size $\alpha$ we write:
+%\begin{equation}
+%\delta(r,\theta,\alpha) = \frac{\sin(\theta)\alpha}{r},
+%\label{eq:driftSpeed}
+%\end{equation}
+%therefore bearing slide speed is a function of the distance $r$ and of the initial bearing of the larva to the peak $\theta$ and proportional to the agents step size $\alpha$. The slide speed is maximized when the peak is at $90$ degrees to the agents heading.
+%
+%Thus it becomes clear that as the agent moves a step $\alpha$ the algorithm is faced with tracking a peak that also moves at every step by an angle $\delta(r,\theta,\alpha)$.
+%Figure \ref{fig:AlgoAnalysis}D examines the convergence given that the objective function is now sliding with a constant speed $\delta$. Given that as we have seen $\delta$ is not constant for a moving agent,  we nevertheless use this simple artificial scenario to show that under these conditions the algorithm no longer converges the peak  but at an offset from it that increases with $\delta$.
+% Increasing $\delta$ further will reach a point when the algorithms peak-tracking speed is not sufficient and thus the algorithm fails to track the peak. The tracking speed, is as expected, controlled by the same parameters that determine the convergence speed of the algorithm ($G, T_b$). 
+% 
+%Thus, depending on the ability of the agent to track a moving peak, the trajectory will either converge to an orbit at a distance where the sliding speed matches the algorithms tracking speed, or alternatively, the agent  accurately tracks the peak and passes over it.
+% Under these circumstances the agent displays the characteristic crossing segments of the odour source, as once the agent passes over the peak  $\theta_n$ of the algorithm is suddenly reset to 180 degrees and new search for the peak begins, resulting overall in sharp.
+%The consequence of the above explanation is that since the $\delta$ is function of the agent's step size $\alpha$, then slowing down the agent's forward motion improves its ability to track the odour source. 
+%
+%
+%\paragraph{Effect of Baseline angle $T_b$}
+%Consider the mean value theorem :
+%\begin{equation}
+%d\frac{f(x)}{dx} = \frac{f(b) - f(a)}{b-a}
+%\end{equation}
+%against our stimulus sampling function in the absence of an odour gradient:
+%\begin{align}
+%\nabla s(\theta_n) &= s(\theta_n) - s(\theta_{n-1})\nonumber \\
+%				   &= s(\theta_n) - s(\theta_{n} - G T_b).
+%\end{align}
+%Then according to the mean value theorem, if we divide both sides by $G T_b$ we then can rewrite as :
+%\begin{align}
+%\nabla s(\theta_n)/G T_b &= d\frac{s(\theta)}{d\theta} \nonumber \\
+%       \nabla s(\theta_n) &= G T_b \frac{s(\theta)}{d\theta},
+%\end{align}
+%thus we see that $T_b$ scales the derivative of the stimulus function at $\theta$, multiplicatively to the gain. Therefore, increasing the baseline oscillation angle of the larva's head effectively increases its sensory gain. Nevertheless, the  
+%
+%In the one dimensional Gaussian case, setting $T_b = 0$ would make sequence of points stationary and thus in effect impair the tracking ability of the algorithm. In the 2D case however, the agent's continuous forward stepping modify the bearing to peak angle on each step according to equation \eqref{eq:driftSpeed}, thus $\nabla s(\theta_n) \geq 0$  and sampling will still exist (see Figure \ref{fig:FigS1} for a few sample 2D paths with changing $T_b$).
+%As a side note, setting $G T_b = Pi/3$ will give $\nabla s(\theta_n) \approx d\frac{s(\theta)}{d\theta}$, thus the sampled derivative between two points $Pi/3$ apart approximates the infinitesimal one obtained analytically.
 
 
 %
