@@ -329,7 +329,10 @@ We take this continuous oscillation to be the underlying basis for larval behavi
  
  In this oscillatory taxis mechanism, ‘directed’ motion by the animal towards a target does not require a lateralised descending signal. Sensory information does not need to be segregated between left and right commands, nor does the agent need to know if it is currently moving left or right. The apparent ‘decision’ to turn left or right simply emerges from the interaction of the non-directional sensory signal with the current state of the oscillator.
  
- To our view, this does not represent a decision making circuit. A 'decision' circuit implies the existence of at least two stable neural states, each of which represents a discrete action and transition between these states depends on the sensory situation. Such stable states do not exist in our proposed mechanism. The state of the oscillator is driven by an internal rhythm, which carries on independently of the current sensory situation. 
+ To our view, this does not constitute a decision making circuit.
+  A 'decision' circuit implies the existence of at least two stable neural activity states, each of which  represents a discrete action, while transitions between states would occur in response to the sensory situation.
+  In dynamical system terms these stable neural states could be represented by an equilibrium point of neural activation patterns or by distinct dynamics of the neural system driven via a phase transitions.
+   Such multiple stable states do not occur in our proposed taxis mechanism. The state of the oscillator has an intrinsic rhythm, and the sensory situation only perturbs its stable cyclic dynamics. 
 
 Hence we would predict that it should not be possible to isolate distinct control circuits that trigger these apparently distinct actions: for example, genetically switching-off weathervaning without affecting high amplitude head-casts or vice-versa.
 
@@ -397,7 +400,7 @@ However, the observed crawling speed is not purely continuous: contrary to turni
 
 \subsection{Conclusion}
 %doneKL\todoBW{cites in this paragraph (and above?) need to be changed to bibtex}
-% \todoKL{Add that responses are state dependent. Also, clarify our model not in larva full complexity, but targets what we think is the primary driver behind taxis. In reality more modules and dynamics must be at play. However we stress ...it's awesome}
+% \todoKL{Add that responses are state dependent. Also, clarify our model not in larva full complexity, but targets what we think is the primary driver behind taxis. In reality more modules and dynamics must be at play.}
 Larval taxis behaviour has been characterised as transitions between discrete states, or actions \citep{green1983organization,sawin1994sensorimotor, cobbwhatandhow1999, gomez2012active}  requiring ‘action-selection’ or ‘decision-making’ processes \citep{gomez2014multilevel}. Here we presented an alternative hypothesis where taxis results from a single simple sensory-motor process (Figure \ref{fig:Peristalsis}C): sensory signals directly modulate the continuous lateral oscillations of the anterior body that we observed in larvae (Figure \ref{fig:DynamicsExample}). In effect, this process can be continuous so the animal does not need to take decisions. 
 Evidently, our models do not represent at all the full complexity of real larvae neural processing and body mechanics. However, despite their simplicity, they can capture a remarkable number of taxis phenomena observed in larvae, which suggests that the hypothesis they embed reflects a core mechanism operating in larvae for taxis. Under this light, explicit neural representations of actions such as curved-run vs. turn or left vs. right are not required for the animal to perform taxis. Instead, these apparent `decisions' emerge from dynamic interactions operating in the brain-body-environment loop.
 
@@ -409,7 +412,7 @@ Investigating how this system can operate within the complexity of larvae body m
 %TC:ignore
 \section{Materials And Methods}
 \subsection{Real larvae path analysis.}
-We analysed the tracks from 42 wild type larvae, the data recorded for \cite{gomez2011active}, which was supplied by Matthieu Louis. Each 3rd-instar foraging-larva path was recorded for 5 min at 7fps after releasing each larva on a rectangular agarose slab opposite to an odour source given by an ethyl butyrate droplet suspended from the lid.
+We analysed the tracks from 42 wild type larvae, the data recorded for \cite{gomez2011active}, which was supplied by Matthieu Louis. Each 3rd-instar foraging-larva path was recorded for 5 minutes at 7fps after releasing each larva on a rectangular agarose slab opposite to an odour source given by an ethyl butyrate droplet suspended from the lid.
  Tail, centroid and head positions were extracted from each frame of the video using custom tracking software.
  Having obtained the processed data we used Matlab to analyse the tracks.
   Body bending was calculated as the angle formed between the tail-to-centroid axis and centroid-to-head axis. The variable ‘angular velocity of the anterior part of the body’ was obtained as the derivative across time of the centroid-to-head axis orientation. Specifics of the path analysis are presented where appropriate in the result sections. 
@@ -433,7 +436,7 @@ In the equations above $g$ is the gain, $\nabla s_{n-1}  = s_{n-1} - s_{n-2}$ re
 \begin{equation}
 H(x) =
 \begin{cases}
-x \mbox{ if } 0 \leq x \geq \pi \\
+x \mbox{ if } 0 \leq x \leq \pi \\
 \pi \mbox{ if } x > \pi  \\
 0 \mbox{ if } x < 0 
 \end{cases}
@@ -533,7 +536,7 @@ The bearing $B$ is calculated via an integration of the change of heading angle 
 \frac{dy}{dt} &= \cos{\dfrac{B(t)}{10}},
 \end{align}
  the factors of 10 are simply used here to scale-down the motion of the agent so it looks similar to the scale used in the discrete agent model.
-Lastly, we define the $A$ neuron's activity pattern which we assumed to be representative of an olfactory sensory neuron. $A$'s output is a combination of a tonic output $b_T$ , which is required to maintain the oscillation but also influences the oscillation frequency \cite{lansner1997realistic}, along with the derivative of the odour concentration $S(t)$ superimposed : 
+Lastly, we define the $A$ neuron's activity pattern which we assumed to be representative of an olfactory sensory neuron. $A$'s output is a combination of a tonic output $b_T$ , which is required to maintain the oscillation but also influences the oscillation frequency \cite{lansner1997realistic}, along with the derivative of the odour concentration $C(t)$ superimposed : 
 \begin{equation}
 A(t) = b_T + G \frac{dS}{dt},
 \end{equation}
@@ -553,7 +556,7 @@ m(x,y) = \frac{1}{2 \pi  \sigma_x \sigma_y \sqrt{1-\rho^2}}\\
 with $\rho = \frac{\Cov(x,y)}{\sigma_1 \sigma_2}$ being the correlation of $x$ and $y$.
 The sensory information as a function of time is then given by :
 \begin{equation}
-S(t) = C m(x(t),y(t)).
+C(t) = C m(x(t),y(t)).
 \label{eq:SensoryFunction}
 \end{equation}
 The model system was evaluated numerically using mathematics software from \cite{math}
@@ -614,7 +617,6 @@ Left side shows the angular speed of the anterior part of the body (blue), body 
 {\bf A,B.} Average ($\pm 95\%$CI) dynamics of the anterior body angular velocity (blue), body bending (black) and tail velocities (green) displayed before and after the onset of peristalsis inhibition events aligned at $t=0$ (dashed red line, when tail speed drops to a minimum), and categorised according to whether the larva is sweeping towards the left ({\bf A}) or right ({\bf B}) at $t=0$. Drops in forward crawling speed tend to be accompanied by a large head sweep, as shown previously \citep{hernandez2015reverse} (see supplemental Figure \ref{fig:FigS2}). Large head sweep are preceded by low amplitude head casts in the opposite direction (arrows), suggesting the large head cast direction is dependent on the state of the oscillation. %(Continued)
 {\bf C.} Fourier analysis of the angular velocity of the anterior body (blue) and tail speed (green) across all larvae (see inset for a single individual). Tail speed (peristalsis) rhythm is fairly constant across larva at around 1.0Hz, with slight harmonics of the tail speed at 0.5Hz, which results from the tendency of some larvae to alternate continuously between a weaker and stronger peristalsis wave (see \ref{fig:DynamicsExample}A) tail speed for an example). The angular velocity of the anterior body (blue) shows a slower rhythm than the peristalsis, with a higher variation across and within individuals. Note that the rhythms are not multiples of each other, suggesting that they are operating independently (see also Figure \ref{fig:FigS1}).
  {\bf D.} Distributions of markers of the anterior body sweeps (see inset for logarithmic scale) reveal no sign of bimodality, suggesting a a continuum of turning modulations rather than the triggering of distinct specific actions. {\bf E,F.}Distributions of individual head-sweep’s duration ({\bf E}) and maximum angular speed ({\bf F}). Head sweeps are defined as the period between the two successive points in time where the anterior body angular speed crosses zero. {\bf F.}Head sweeps tend to reach higher angular velocity during stop phases (dash grey) than during crawling phases (grey) (i.e. when tail speed average during head sweep is <0.3 mm/s and >0.7 mm/s respectively). ({\bf E}) Head sweeps duration can vary, however, the distributions of duration are similar during stop phases (dash grey) and forward crawling phases (grey), suggesting a shared underlying oscillatory rhythm ({\bf E}). 
-
 \label{fig:GroupAnalysis}
 }
 \end{center}
