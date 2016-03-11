@@ -26,6 +26,7 @@
 %\usepackage{moreverb} % for verbatim ouput
 \usepackage{sverb}
 \usepackage{hyperref}
+\usepackage{prettyref}
 
 \usepackage{authblk}
 
@@ -41,6 +42,10 @@
         \renewcommand{\thefigure}{S\arabic{figure}}%
      }
 
+\newrefformat{fig}{Figure \ref{#1}]}
+\newrefformat{fig1S}{Figure 1S\ref{#1}]}
+\newrefformat{fig2S}{Figure 2S\ref{#1}]}
+\newrefformat{fig3S}{Figure 3S\ref{#1}]}
 
 \newcommand{\Cov}{\mathrm{Cov}}
 \newcommand{\Dros }{\emph{Drosophila }}
@@ -121,7 +126,8 @@ Our analysis reveals that larvae indeed display continuous anterior body oscilla
 \subsection{Evidence for continuous anterior body oscillation in larvae}
  We used previously recorded tracks of 42 wild type larvae performing innate chemotaxis \citep{gomez2012active} to analyse the body-bend, the anterior body angular velocity and the forward speed. This reveals a continuous alternation between left and right turns, which appears most clearly in the angular velocity of the anterior part of the body (Figure \ref{fig:DynamicsExample}A ‘blue line’). Larvae are known to regularly stop their forward peristalsis motion and display large lateral head sweeps \citep{gomez2011active}. A closer look shows that these head sweeps do not seem to break the continuous alternation between left and right turns, i.e., if the larva’s head was moving left before stopping the peristalsis motion, the first head sweep after stopping will be to the right, and vice versa (Figure \ref{fig:DynamicsExample}B) and Figure \ref{fig:GroupAnalysis}A,B). Thus these head sweeps appear to be part of a continuous oscillation rather than individual motor actions triggered independently. Also, the distribution of body bending, anterior body angular velocity and acceleration, as well as the extent of each lateral oscillation of the anterior body, show a smooth curve with no signs of bimodality (Figure \ref{fig:GroupAnalysis}D) suggesting a continuum of turning modulation rather than a discrete set of distinguishable actions. 
 
-A Fourier analysis confirms the existence of an oscillatory rhythm with a mean frequency around 0.3Hz; that is roughly one turn left and one turn right every 3.3 seconds (Figure \ref{fig:GroupAnalysis}C, blue). This turning oscillation seems decoupled from the peristalsis motion (supplemental Figure \ref{fig:FigS1}), which operates around a mean frequency of 1.1 Hz (Figure \ref{fig:GroupAnalysis}C, green). The peristalsis rhythm appears remarkably constant,  probably because of biomechanical constraints \citep{ross2015model}). Therefore, a direct coupling between peristalsis and turning oscillation would constrain the larvae to spend as much time sweeping left as sweeping right, which would restrict the flexibility in trajectory alterations.
+A Fourier analysis confirms the existence of an oscillatory rhythm with a mean frequency around 0.3Hz; that is roughly one turn left and one turn right every 3.3 seconds (Figure \ref{fig:GroupAnalysis}C, blue).
+ This turning oscillation seems decoupled from the peristalsis motion (\prettyref{fig1S:FigS1}), which operates around a mean frequency of 1.1 Hz (Figure \ref{fig:GroupAnalysis}C, green). The peristalsis rhythm appears remarkably constant,  probably because of biomechanical constraints \citep{ross2015model}). Therefore, a direct coupling between peristalsis and turning oscillation would constrain the larvae to spend as much time sweeping left as sweeping right, which would restrict the flexibility in trajectory alterations.
  By having the the lateral oscillations decoupled from peristalsis however, the relative duration between left and right sweeps can vary. This is indeed what we observed in larvae. A curving path to the left for instance, is achieved by spending slightly more time (and also increasing the angular speed) sweeping left than sweeping right (Figure \ref{fig:DynamicsExample}A ‘blue region’:  Time spent turning right = 12.9s; Time spent turning left = 22.9s; Ratio right/left= 0.64. Integral left =179.3 degrees; Integral right = -64.6 degrees; Total = 114.7 degrees left; Ratio right/left= 0.73). Even-though larvae show larger and quicker head sweeps during stop phases (i.e. when the peristalsis motion has stopped) (Figure \ref{fig:GroupAnalysis}F), the durations of head-sweeps is similar for crawling phases and stop phases (Figure \ref{fig:GroupAnalysis}E), suggesting the existence of a shared underlying oscillatory rhythm. 
 
 To summarize, our observations support the hypothesis that a continuous lateral oscillation of the anterior body sits at the core of the chemotaxis mechanism, and that its rhythm is decoupled to the peristaltic rhythm thus allowing more freedom to adjust the head-turning velocity and amplitude.
@@ -160,7 +166,7 @@ The {\it direction} of these re-orientations alternates between left and right a
 
 The {\it amplitude} ($\alpha$) of these left/right alternating re-orientations is bounded from above and below \eqref{eq:boundary}. For most results reported in this paper the lower bound is 0 degrees (prevents a `right' turn becoming a `left' turn or vice versa) and the upper bound 180 degrees to represent the maximum possible re-orientation given the larva body bending constraints (Figure \ref{fig:MethodAgent}A,B dashed line).
 
-In the absence of any stimulus, the {\it amplitude} ($\alpha$) of these re-orientations has a baseline angle $\theta_{B}$. In the main results, we set $\theta_{B}$ = 10 deg, so as to roughly match the apparent amplitude of the oscillations observed in larva in the absence of strong modulations \ref{fig:DynamicsExample}A. However, the value of this parameter is not crucial for the emergence of taxis (Figure \ref{fig:FigS3}).
+In the absence of any stimulus, the {\it amplitude} ($\alpha$) of these re-orientations has a baseline angle $\theta_{B}$. In the main results, we set $\theta_{B}$ = 10 deg, so as to roughly match the apparent amplitude of the oscillations observed in larva in the absence of strong modulations \ref{fig:DynamicsExample}A. However, the value of this parameter is not crucial for the emergence of taxis (\prettyref{fig3S:FigS3} ).
 %\todoBW{There may be a problem with the figure labels here (and other refs to supplementary figures?) as this shows up as S2 in the pdf, which is the wrong reference}
 
 In the presence of stimulation, such as a gradient of odour concentration, the {\it amplitude} ($\alpha$) of each of these re-orientations is modulated by the stimulus perceived. The stimulus perceived is taken as the difference in stimulus intensity between the previous and current location (in our model: $\nabla s$) (Figure \ref{fig:MethodAgent}B). 
@@ -168,8 +174,8 @@ The {\it amplitude} ($\alpha$) of the rotation is determined by a simple linear 
 
 The value of the gain $g$ is taken to represent the sensory-motor transformation, that is, how the sensory stimulation perceived is transformed into a motor command. What this linear transformation could imply for the larva is considered in the discussion. 
 
-Figure \ref{fig:MethodAgent}C,D shows that this simple agent is sufficient for taxis to emerge. The behaviour is very robust to the choice of baseline turning angle $\theta_B$ or gain values (supplementary Figure \ref{fig:FigS3}).
- Effectively, a negative gain ($g<0$) yields attraction towards higher stimulus intensity because decreasing stimulation ($\nabla s<0$) triggers strong re-orientations, while increasing stimulation ($\nabla s>0$) straightens the path (Figure  \ref{fig:MethodAgent}B). Inversely, a positive gain ($g>0$) yields aversion (D), and a null gain ($g=0$) yields neither attraction nor repulsion. While the sign of the gain $g$ determines attraction or repulsion, the magnitude determines its strength : the larger the gain, the stronger the agent's reaction to the sensory stimulation is, and thus stronger attraction or aversion emerges in the resulting trajectories (see Figure \ref{fig:FigS3}, first row).
+Figure \ref{fig:MethodAgent}C,D shows that this simple agent is sufficient for taxis to emerge. The behaviour is very robust to the choice of baseline turning angle $\theta_B$ or gain values (\prettyref{fig3S:FigS3}).
+ Effectively, a negative gain ($g<0$) yields attraction towards higher stimulus intensity because decreasing stimulation ($\nabla s<0$) triggers strong re-orientations, while increasing stimulation ($\nabla s>0$) straightens the path (Figure  \ref{fig:MethodAgent}B). Inversely, a positive gain ($g>0$) yields aversion (D), and a null gain ($g=0$) yields neither attraction nor repulsion. While the sign of the gain $g$ determines attraction or repulsion, the magnitude determines its strength : the larger the gain, the stronger the agent's reaction to the sensory stimulation is, and thus stronger attraction or aversion emerges in the resulting trajectories (see \prettyref{fig3S:FigS3}, first row).
 
 In the following sections, we examine the ability of this basic model to capture the typical chemotactic signatures observed in larvae, including path shapes, bearing to odour distribution shapes, sensory history, and their qualitative change resulting from typical manipulations such as change in stimulus concentration, associative learning or presence of tastants. 
 
@@ -331,7 +337,7 @@ This led us to the hypothesis that larval taxis behaviour results from direct on
 The models were simplified as far as possible so as to establish the nature of the essential sensorimotor components that could underlie the emergence of chemotactic signatures observed in larvae.
 The larva is abstracted to a single point sensor associated with a heading. This point sensor is responsive to changes in stimulus intensity $\nabla s$, which modulates the amplitude of an ongoing left-right oscillation in heading.
  Sensory signal and motor modulation are coupled by a simple linear gain $g$ and operate in a closed-loop with the environment (Figures \ref{fig:MethodAgent}, \ref{fig:LampreyModel}). 
-These models produce robust taxis (Figures \ref{fig:MethodAgent}, \ref{fig:FigS3}, \ref{fig:LampreyModel}) and, despite their simplicity, capture a range of phenomena observed in larvae (see results) through a simple variation of the gain.
+These models produce robust taxis (\prettyref{fig3S:FigS3}, \ref{fig:MethodAgent} , \ref{fig:LampreyModel}) and, despite their simplicity, capture a range of phenomena observed in larvae (see results) through a simple variation of the gain.
 % BW: see my earlier comment for why I think the next sentence belongs in the introduction.
 %KL:It was moved here from Intro  hmm lets leave it here for now 
 %BW: okay, I've put a mention in the intro for C.elegans.
@@ -348,7 +354,7 @@ These models produce robust taxis (Figures \ref{fig:MethodAgent}, \ref{fig:FigS3
  In single amoeba cells \citep{yangzigzag2011}, as in many insects, oscillation about a heading direction can be observed even when direct forward motion is possible, and may have advantages for sensorimotor control when tracking up an odour trail  \citep{hangartner1969structure,farkas1972chemical} or plume \citep{budick2006free, belanger1996centrally, willis1997centrally, willis2008effects,carde2008navigational}, when following a route \citep{lent2010image,kodzhabashev2015route}, or when approaching a visual target \citep{wallace1962experiments,philippides2013bumblebee,voss1998active}.
 
  %Our model assumes that underlying these features there is a regular and continuous left-right oscillation of the anterior body, and 
- We have presented evidence from larval tracking that such a rhythmic lateral oscillation exists (Figures \ref{fig:DynamicsExample} \& \ref{fig:GroupAnalysis}), and is apparently uncorrelated with the peristaltic rhythm (Figures \ref{fig:FigS1},\ref{fig:DynamicsExample}).
+ We have presented evidence from larval tracking that such a rhythmic lateral oscillation exists (Figures \ref{fig:DynamicsExample} \& \ref{fig:GroupAnalysis}), and is apparently uncorrelated with the peristaltic rhythm (\prettyref{fig:DynamicsExample}).
 We take this continuous oscillation to be the underlying basis for larval behaviours that are often treated as distinct states triggered by dedicated sensory motor processes (see \cite{green1983organization,sawin1994sensorimotor, cobbwhatandhow1999,vogelstein2014discovery, gomez2012active, gomez2014multilevel, hernandez2015reverse,gepner2015computations}).
  That is, we suggest running/weathervaning and casting/turning all result from the same underlying and continuously active oscillatory mechanism (Figure \ref{fig:Peristalsis}C,D).
  
@@ -421,7 +427,7 @@ Although not included in the current model, developmental \citep{gong2010two,wu2
    Similarly, the current presence of sugar in the environment, which is known to prevent the expression of the odour-associated memory \citep{schleyer2011behavior}, could do so by simply modulating MB output gain before it converges with the innate pathway. 
 
 \subsection{Integrating lateral oscillation with peristaltic motion}
-By ignoring the peristalsis inhibition events observed in larvae, our models showed that peristalsis inhibition is not crucial for the emergence of the taxis signatures discussed above. However, it is clear that crawling speed can vary in larvae, including the sharp decrease towards zero speed correlated with the larger body bends (Figure \ref{fig:DynamicsExample} tail speed). How is crawling speed controlled? It could be that physical constraints lead to the peristaltic wave being disrupted by large turns, and indeed most higher amplitude turns are achieved when the peristalsis is inhibited (Figure \ref{fig:DynamicsExample}E, F; \ref{fig:FigS2}). However, our analysis (consistent with \citet{gepner2015computations,hernandez2015reverse}) shows that the inhibition of the forward motion is triggered on average at the onset of the turn and is thus clearly not a mere consequence of large body bends (Figure \ref{fig:Peristalsis}B).
+By ignoring the peristalsis inhibition events observed in larvae, our models showed that peristalsis inhibition is not crucial for the emergence of the taxis signatures discussed above. However, it is clear that crawling speed can vary in larvae, including the sharp decrease towards zero speed correlated with the larger body bends (Figure \ref{fig:DynamicsExample} tail speed). How is crawling speed controlled? It could be that physical constraints lead to the peristaltic wave being disrupted by large turns, and indeed most higher amplitude turns are achieved when the peristalsis is inhibited (Figure \ref{fig:DynamicsExample}E, F; \prettyref{fig2S:FigS2}). However, our analysis (consistent with \citet{gepner2015computations,hernandez2015reverse}) shows that the inhibition of the forward motion is triggered on average at the onset of the turn and is thus clearly not a mere consequence of large body bends (Figure \ref{fig:Peristalsis}B).
  This suggests that a  command inhibiting peristalsis is sent when the larva is preparing for a large turn.
   Note, however, that this seems to be a graded response, which could mean that the inhibitory signal may vary in intensity such that the peristalsis is not always completely interrupted (Figure \ref{fig:DynamicsExample}B, C).
 
@@ -710,8 +716,8 @@ Left side shows the angular speed of the anterior part of the body (blue), body 
 \begin{center}
 %\includegraphics[width=145mm]{figures/Fig2_group_analysis.pdf}
 \caption{{\bf Group statistics of larva motion dynamics during chemotaxis support the existence of an intrinsic lateral oscillatory rhythm.}
-{\bf A,B.} Average ($\pm 95\%$CI) dynamics of the anterior body angular velocity (blue), body bending (black) and tail velocities (green) displayed before and after the onset of peristalsis inhibition events aligned at $t=0$ (dashed red line, when tail speed drops to a minimum), and categorised according to whether the larva is sweeping towards the left ({\bf A}) or right ({\bf B}) at $t=0$. Drops in forward crawling speed tend to be accompanied by a large head sweep, as shown previously \citep{hernandez2015reverse} (see supplemental Figure \ref{fig:FigS2}). Large head sweep are preceded by low amplitude head casts in the opposite direction (arrows), suggesting the large head cast direction is dependent on the state of the oscillation. %(Continued)
-{\bf C.} Fourier analysis of the angular velocity of the anterior body (blue) and tail speed (green) across all larvae (see inset for a single individual). Tail speed (peristalsis) rhythm is fairly constant across larva at around 1.0Hz, with slight harmonics of the tail speed at 0.5Hz, which results from the tendency of some larvae to alternate continuously between a weaker and stronger peristalsis wave (see \ref{fig:DynamicsExample}A) tail speed for an example). The angular velocity of the anterior body (blue) shows a slower rhythm than the peristalsis, with a higher variation across and within individuals. Note that the rhythms are not multiples of each other, suggesting that they are operating independently (see also Figure \ref{fig:FigS1}).
+{\bf A,B.} Average ($\pm 95\%$CI) dynamics of the anterior body angular velocity (blue), body bending (black) and tail velocities (green) displayed before and after the onset of peristalsis inhibition events aligned at $t=0$ (dashed red line, when tail speed drops to a minimum), and categorised according to whether the larva is sweeping towards the left ({\bf A}) or right ({\bf B}) at $t=0$. Drops in forward crawling speed tend to be accompanied by a large head sweep, as shown previously \citep{hernandez2015reverse} (see \prettyref{fig2S:FigS2}). Large head sweep are preceded by low amplitude head casts in the opposite direction (arrows), suggesting the large head cast direction is dependent on the state of the oscillation. %(Continued)
+{\bf C.} Fourier analysis of the angular velocity of the anterior body (blue) and tail speed (green) across all larvae (see inset for a single individual). Tail speed (peristalsis) rhythm is fairly constant across larva at around 1.0Hz, with slight harmonics of the tail speed at 0.5Hz, which results from the tendency of some larvae to alternate continuously between a weaker and stronger peristalsis wave (see \ref{fig:DynamicsExample}A) tail speed for an example). The angular velocity of the anterior body (blue) shows a slower rhythm than the peristalsis, with a higher variation across and within individuals. Note that the rhythms are not multiples of each other, suggesting that they are operating independently (see also \prettyref{fig1S:FigS1}).
  {\bf D.} Distributions of markers of the anterior body sweeps (see inset for logarithmic scale) reveal no sign of bimodality, suggesting a a continuum of turning modulations rather than the triggering of distinct specific actions. {\bf E,F.}Distributions of individual head-sweep’s duration ({\bf E}) and maximum angular speed ({\bf F}). Head sweeps are defined as the period between the two successive points in time where the anterior body angular speed crosses zero. {\bf F.}Head sweeps tend to reach higher angular velocity during stop phases (dash grey) than during crawling phases (grey) (i.e. when tail speed average during head sweep is $<0.3$ mm/s and $>0.7$ mm/s respectively). ({\bf E}) Head sweeps duration can vary, however, the distributions of duration are similar during stop phases (dash grey) and forward crawling phases (grey), suggesting a shared underlying oscillatory rhythm ({\bf E}). 
 \label{fig:GroupAnalysis}
 }
@@ -724,7 +730,7 @@ Left side shows the angular speed of the anterior part of the body (blue), body 
 %\begin{center}
 %\ContinuedFloat
 %\caption{
-%{\bf C.} Fourier analysis of the angular velocity of the anterior body (blue) and tail speed (green) across all larvae (see inset for a single individual). Tail speed (peristalsis) rhythm is fairly constant across larva at around 1.0Hz, with slight harmonics of the tail speed at 0.5Hz, which results from the tendency of some larvae to alternate continuously between a weaker and stronger peristalsis wave (see \ref{fig:DynamicsExample}A) tail speed for an example). The angular velocity of the anterior body (blue) shows a slower rhythm than the peristalsis, with a higher variation across and within individuals. Note that the rhythms are not multiples of each other, suggesting that they are operating independently (see also Figure \ref{fig:FigS1}).
+%{\bf C.} Fourier analysis of the angular velocity of the anterior body (blue) and tail speed (green) across all larvae (see inset for a single individual). Tail speed (peristalsis) rhythm is fairly constant across larva at around 1.0Hz, with slight harmonics of the tail speed at 0.5Hz, which results from the tendency of some larvae to alternate continuously between a weaker and stronger peristalsis wave (see \ref{fig:DynamicsExample}A) tail speed for an example). The angular velocity of the anterior body (blue) shows a slower rhythm than the peristalsis, with a higher variation across and within individuals. Note that the rhythms are not multiples of each other, suggesting that they are operating independently (see also Figure \ref{figS:FigS1}).
 % {\bf D.} Distributions of markers of the anterior body sweeps (see inset for logarithmic scale) reveal no sign of bimodality, suggesting a a continuum of turning modulations rather than the triggering of distinct specific actions.
 %\label{fig:GroupAnalysis}
 %}
@@ -890,40 +896,45 @@ Left side shows the angular speed of the anterior part of the body (blue), body 
 %\beginsupplement
 \setcounter{figure}{0}
 \renewcommand{\figurename}{Figure 1 Supplement}
+\setcounter{figure}{0}
+
 %%%SUPPLEMENTARY FIGURES%%%
 \begin{figure}[ht!]
 \begin{center}
 %\includegraphics[width=145mm]{figures/FigS1_decoupling.pdf}
-\caption{{\bf Peristalsis and lateral oscillations’ rhythmic activities appear decoupled.}
+\caption{ {\bf Peristalsis and lateral oscillations’ rhythmic activities appear decoupled.}
 %(Continued)
 {\bf A.} During forward crawling, the speed of the tail, middle spine point and head show a strongly correlated rhythm characteristic of the peristalsis motion (Note that some individuals display a continuous alternation between a strong and a weak step). We used tail speed to characterise peristalsis motion as it is the least sensitive to the lateral motion of the anterior body.
 {\bf B,C.} Anterior body angular velocity and, to a lesser extent body bending, are representative of the rhythmic activity of the continuous lateral oscillations displayed by the larva (see Figure \ref{fig:MethodAgent}). However, the distribution of anterior body angular velocities (B); and body bending angles (C) is similar whether sampled across all frames or during specific phases of the peristalsis rhythm such as peaks of tail speed. {\bf D.} Similarly, the distribution of tail speed during forward motion (tail speed $< 0.4$) is similar whether sampled across all frames or during specific phases of the anterior body angular velocity and body bending activities. Together with the fact their rhythms’ mean frequency are not harmonics (Figure \ref{fig:MethodAgent}D), this suggests that that the peristalsis and lateral oscillations’ rhythms are generated independently.
- \label{fig:FigS1}}
+ \label{fig1S:FigS1}}
 \end{center}
 \end{figure}
 
 \renewcommand{\figurename}{Figure 2 Supplement}
 \setcounter{figure}{0}
+\newrefformat{fig}{Figure 2S\ref{#1}]}
 \begin{figure}
 \begin{center}
 %\includegraphics[width=145mm]{figures/FigS2_correlation_plot_BMP.pdf}
 \caption{{\bf Correlation of large body bends to peristalsis.}
  {\bf A,B.} Large angular turns of the anterior body from one side to the other (A) and strong angular acceleration of the anterior body (B) are also good predictors of peristalsis inhibition (see Figure \ref{fig:MethodAgent}E,F for anterior body angular speed and body bending). These variables are plotted against tail speed for a random selection of points across all larvae track (blue). Full red line shows the ratio of data that are higher than current $x$ value. Black line shows the ratio of such data (higher than current $x$ value) that are below the tail speed threshold (black dash line).
  {\bf C.} The relative distributions of markers of the anterior body turnings (showed here on a logarithmic scale to increase resolution for large turns) reveal no sign of bimodality, suggesting a continuous modulation of the lateral oscillations rather than the triggering of distinct actions.
-\label{fig:FigS2}}
+\label{fig2S:FigS2}}
 \end{center}
 \hrule
 \end{figure}
 
 
-\setcounter{figure}{0}
+
 \renewcommand{\figurename}{Figure 3 Supplement}
+\setcounter{figure}{0}
+\newrefformat{fig}{Figure 3S\ref{#1}]}
 \begin{figure}
 \begin{center}
 %includegraphics[width=145mm]{figures/FigS3Ex_gain_-20_-100_BMP.pdf}
 \caption{{\bf Model’s robustness to change in baseline angle.}
 The baseline angle corresponds to the extent of the spontaneous lateral oscillatory turns effected in the absence of sensory stimulation. In our abstract model, the baseline is set to 10 degrees to fit roughly the data observed in larvae, but taxis emerges even for extreme values such as 160 degree, showing that the principle behind our model (i.e. sensory modulation of continuous lateral oscillation) provides a robust way of achieving taxis. Up-regulating turn towards 180 degrees (i.e. when a negative transient is perceived) appears more important than down-regulating turn towards 0 degrees (i.e. when a positive transient is perceived); however, taxis still emerge by down regulating turns when the baseline angle is large and leaves enough range for modulation. We have reasons to think that larvae achieve taxis by dual regulation, that is, by performing both up-regulation and down-regulation of turns (see for discussion our supplemental text: ‘Depolarisation and hyperpolarisation rather than ON and OFF cells’)   
-\label{fig:FigS3}}
+\label{fig3S:FigS3}}
 \end{center}
 \hrule
 \end{figure}
